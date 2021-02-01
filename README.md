@@ -1,4 +1,7 @@
-TOOLS:
+#Tools That I used
+
+
+#INFORMER
 
 dnscan
 
@@ -18,11 +21,7 @@ filter-resolved
 
 subjack
 
-#Others
-
 httpx
-
-waybackdata
 
 waybackurls
 
@@ -50,11 +49,14 @@ Subdomainizers
 
 Emissary
 
-#Infuture
+#Infuture I will add in informer
 
 LinkFinder
 
 FeroxBuster
+
+
+#TOMNOMNOM (Used in manual testing)
 
 b64d
 
