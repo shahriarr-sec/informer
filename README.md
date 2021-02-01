@@ -44,3 +44,4 @@ girtree https://github.com/tomnomnom/hacks/tree/master/gittrees
 qsreplace
 kxss
 tok
+urinteresting  \\helps to priotize manual testing
