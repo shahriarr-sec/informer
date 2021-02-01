@@ -34,3 +34,7 @@ Emissary
 #Infuture
 LinkFinder
 FeroxBuster
+b64d
+comb
+ettu
+tko
