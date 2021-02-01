@@ -39,4 +39,7 @@ comb
 ettu
 tko
 get-title (cat urls.txt | get-title) \\handy in manual test
+html-comments \\handy in manual test
 girtree https://github.com/tomnomnom/hacks/tree/master/gittrees
+qsreplace
+kxss
