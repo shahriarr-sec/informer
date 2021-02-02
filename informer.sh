@@ -160,7 +160,7 @@ aws_scanner(){
 for sub in $(cat $host);
 do
 echo "Searching for a broken bucket in aws using flumberbuckets ... "
-python3 ~/tools/flumberboozle/flumberbuckets/flumberbuckets.py -m ~/tools/massdns/bin/massdns -w /root/tools/flumberboozle/flumberbuckets/medium.txt -d /root/.gdrive/Recon-Data/$sub/Subdomains/resolved_subdomains.txt -i test -o /root/.gdrive/Recon-Data/$sub/ReconData/aws_bucket.txt;
+python3 ~/tools/flumberboozle/flumberbuckets/flumberbuckets.py -m ~/tools/massdns/bin/massdns -w /root/tools/flumberboozle/flumberbuckets/medium.txt -d /root/.gdrive/Recon-Data/$sub/Subdomains/resolved_subdomains.txt --resolve $resolvers -i test -o /root/.gdrive/Recon-Data/$sub/ReconData/aws_bucket.txt;
 done
 }
 aws_scanner
