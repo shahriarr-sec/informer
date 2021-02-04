@@ -235,6 +235,14 @@ done
 }
 broken_link_scanner
 
+tom(){
+for sub in $(cat $host);
+do
+echo "Running meg on $sub..."
+meg /root/.gdrive/Recon-Data/$sub/ReconData/CustomWordlist/paths.txt /root/.gdrive/Recon-Data/$sub/ReconData/httpx.txt  /root/.gdrive/Recon-Data/$sub/Meg -v
+done
+}
+
 keyfinding(){
 for sub in $(cat $host);
 do
