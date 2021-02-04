@@ -293,6 +293,14 @@ done
 }
 gf_pattern
 
+content_discovery(){
+for sub in $(cat $host);
+do
+cat /root/.gdrive/Recon-Data/$sub/ReconData/httpx.txt | feroxbuster --stdin -e -k -r -d 3 -t 20 -L 1 -w $wordlist_cd -a "Mozilla/5.0 (Windows NT 10.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36" -o /root/.gdrive/Recon-Data/$sub/ContentDiscovery
+done
+}
+content_discovery
+
 echo "Recon is completed,don't forget to check outputs..."
 echo "Do not forget to validate your secrets with AdvancedKeyHacks by udit-thakkur..."
-emissary -t -m "Informer completed his recon for you,Don't forget to check resuls,You may find some juicy stuffs"
+emissary -t -m "Informer completed recon for you,Don't forget to check resuls,You may find some juicy stuffs"
