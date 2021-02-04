@@ -254,5 +254,5 @@ done
 keyfinding
 
 echo "Recon is completed,don't forget to check outputs..."
-echo "Do not forget to validate your secret with AdvancedKeyHacks by udit-thakkur..."
+echo "Do not forget to validate your secrets with AdvancedKeyHacks by udit-thakkur..."
 emissary -t -m "Informer completed his recon for you,Don't forget to check resuls,You may find some juicy stuffs"
