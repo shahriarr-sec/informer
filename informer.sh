@@ -242,6 +242,7 @@ echo "Running meg on $sub..."
 meg /root/.gdrive/Recon-Data/$sub/ReconData/CustomWordlist/paths.txt /root/.gdrive/Recon-Data/$sub/ReconData/httpx.txt  /root/.gdrive/Recon-Data/$sub/Meg -v
 done
 }
+tom
 
 keyfinding(){
 for sub in $(cat $host);
