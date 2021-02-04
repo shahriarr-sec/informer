@@ -119,3 +119,7 @@ urinteresting  \\helps to priotize manual testing
 meg
 
 gf
+
+
+
+All the credit goes to the creator of these tools.Thank you for making life easier.
