@@ -1,0 +1,11 @@
+tldextract
+argparse
+termcolor
+dnspython
+requests
+colorama
+awscli
+sh
+pytest-xdist
+coloredlogs
+boto3
