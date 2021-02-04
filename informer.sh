@@ -16,7 +16,7 @@ EOF
 #Check api with AdvancedKeyHacks
 host=$1
 #Change the word list path to use your own wordlist.Word lists must end with wordlist.txt. e.g /path/wordlist.txt
-wordlist_dns="/root/tools/framework/chomp-scan/wordlists/wordlist.txt"
+wordlist_dns="/root/tools/informer/wordlist.txt"
 resolvers="/root/tools/informer/resolvers.txt"
 
 subdomain_enum(){
