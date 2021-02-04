@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #problem in installing knockpy in kali \\no problem in ubuntu
-#problem in installing dnscan,feroxbuster
+#problem in installing dnscan,feroxbuster \\Please manually install them
 
 # Colors
 NC='\033[0m';
