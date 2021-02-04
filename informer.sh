@@ -254,6 +254,43 @@ done
 }
 keyfinding
 
+gf_pattern(){
+for sub in $(cat $host);
+do
+echo "Only gf that who makes your life easier..."
+gf xss /root/.gdrive/Recon-Data/$sub/ReconData/waybackurls.txt | tee /root/.gdrive/Recon-Data/$sub/ReconData/gf/xss.txt
+gf sqli /root/.gdrive/Recon-Data/$sub/ReconData/waybackurls.txt | tee /root/.gdrive/Recon-Data/$sub/ReconData/gf/sqli.txt
+gf redirect /root/.gdrive/Recon-Data/$sub/ReconData/waybackurls.txt | tee /root/.gdrive/Recon-Data/$sub/ReconData/gf/redirects.txt
+#secrets
+gf aws-keys /root/.gdrive/Recon-Data/$sub/Meg | tee /root/.gdrive/Recon-Data/$sub/ReconData/gf/secrets.txt
+gf aws-keys_secrets /root/.gdrive/Recon-Data/$sub/Meg >> /root/.gdrive/Recon-Data/$sub/ReconData/gf/secrets.txt
+gf facebook-oauth_secrets /root/.gdrive/Recon-Data/$sub/Meg >> /root/.gdrive/Recon-Data/$sub/ReconData/gf/secrets.txt
+gf facebook-token_secrets /root/.gdrive/Recon-Data/$sub/Meg >> /root/.gdrive/Recon-Data/$sub/ReconData/gf/secrets.txt
+gf firebase_secrets /root/.gdrive/Recon-Data/$sub/Meg >> /root/.gdrive/Recon-Data/$sub/ReconData/gf/secrets.txt
+gf firebase /root/.gdrive/Recon-Data/$sub/Meg >> /root/.gdrive/Recon-Data/$sub/ReconData/gf/secrets.txt
+gf github_secrets /root/.gdrive/Recon-Data/$sub/Meg >> /root/.gdrive/Recon-Data/$sub/ReconData/gf/secrets.txt
+gf google-keys_secrets /root/.gdrive/Recon-Data/$sub/Meg >> /root/.gdrive/Recon-Data/$sub/ReconData/gf/secrets.txt
+gf google-oauth_secrets /root/.gdrive/Recon-Data/$sub/Meg >> /root/.gdrive/Recon-Data/$sub/ReconData/gf/secrets.txt
+gf google-service-account_secrets /root/.gdrive/Recon-Data/$sub/Meg >> /root/.gdrive/Recon-Data/$sub/ReconData/gf/secrets.$xt
+gf google-token_secrets /root/.gdrive/Recon-Data/$sub/Meg >> /root/.gdrive/Recon-Data/$sub/ReconData/gf/secrets.txt
+gf heroku-keys_secrets /root/.gdrive/Recon-Data/$sub/Meg >> /root/.gdrive/Recon-Data/$sub/ReconData/gf/secrets.txt
+gf mailchimp-keys_secrets /root/.gdrive/Recon-Data/$sub/Meg >> /root/.gdrive/Recon-Data/$sub/ReconData/gf/secrets.txt
+gf mailchimp-keys_secrets /root/.gdrive/Recon-Data/$sub/Meg >> /root/.gdrive/Recon-Data/$sub/ReconData/gf/secrets.txt
+gf mailgun-keys_secrets /root/.gdrive/Recon-Data/$sub/Meg >> /root/.gdrive/Recon-Data/$sub/ReconData/gf/secrets.txt
+gf paypal-token_secrets /root/.gdrive/Recon-Data/$sub/Meg >> /root/.gdrive/Recon-Data/$sub/ReconData/gf/secrets.txt
+gf picatic-keys_secrets /root/.gdrive/Recon-Data/$sub/Meg >> /root/.gdrive/Recon-Data/$sub/ReconData/gf/secrets.txt
+gf slack-token_secrets /root/.gdrive/Recon-Data/$sub/Meg >> /root/.gdrive/Recon-Data/$sub/ReconData/gf/secrets.txt
+gf slack-webhook_secrets /root/.gdrive/Recon-Data/$sub/Meg >> /root/.gdrive/Recon-Data/$sub/ReconData/gf/secrets.txt
+gf twilio-keys_secrets /root/.gdrive/Recon-Data/$sub/Meg >> /root/.gdrive/Recon-Data/$sub/ReconData/gf/secrets.txt
+gf twitter-oauth_secrets /root/.gdrive/Recon-Data/$sub/Meg >> /root/.gdrive/Recon-Data/$sub/ReconData/gf/secrets.txt
+gf twitter-token_secrets /root/.gdrive/Recon-Data/$sub/Meg >> /root/.gdrive/Recon-Data/$sub/ReconData/gf/secrets.txt
+#Interesting
+gf interestingparams /root/.gdrive/Recon-Data/$sub/ReconData/paramlist/gathered_paramlist.txt | tee /root/.gdrive/Recon-Data/$sub/ReconData/gf/inte$estingparams.txt
+gf interestingsubs /root/.gdrive/Recon-Data/$sub/Subdomains/resolved_subdomains.txt | tee /root/.gdrive/Recon-Data/$sub/ReconData/gf/interestingsubs.txt
+done
+}
+gf_pattern
+
 echo "Recon is completed,don't forget to check outputs..."
 echo "Do not forget to validate your secrets with AdvancedKeyHacks by udit-thakkur..."
 emissary -t -m "Informer completed his recon for you,Don't forget to check resuls,You may find some juicy stuffs"
