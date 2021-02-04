@@ -12,6 +12,9 @@ The domains.lst should contain only domain name
 
 cat domains.lst
 example.com
+
+
+
 www.target.com
 
 
