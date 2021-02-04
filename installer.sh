@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #problem in installing knockpy in kali \\no problem in ubuntu
-#problem in installing dnscan,feroxbuster \\Please manually install them
+#problem in installing dnscan \\Please manually install it
 
 # Colors
 NC='\033[0m';
@@ -283,10 +283,8 @@ function install_feroxbuster(){
 				rm -rf "$TOOLS"/feroxbuster;
 		fi
 		echo -e "$GREEN""[+] Installing feroxbuster from Github.""$NC";
-		wget -sLO https://github.com/epi052/feroxbuster/releases/latest/download/feroxbuster_amd64.deb.zip;
-        unzip feroxbuster_amd64.deb.zip;
-        sudo apt install ./feroxbuster_amd64.deb;
-        rm "$TOOLS"/feroxbuster_amd64.deb.zip;
+		curl -sL https://raw.githubusercontent.com/epi052/feroxbuster/master/install-nix.sh | bash
+		echo "Installed github you can manage this by making an ferox buster directory"
 
 
 }
