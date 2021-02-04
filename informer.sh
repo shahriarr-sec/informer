@@ -22,7 +22,7 @@ resolvers="/root/tools/informer/resolvers.txt"
 subdomain_enum(){
 for sub in $(cat $host);
 do
-mkdir -p /root/.gdrive/Recon-Data/$sub /root/.gdrive/Recon-Data/$sub/Subdomains /root/.gdrive/Recon-Data/$sub/ReconData /root/.gdrive/Recon-Data/$sub/ReconData/subjack /root/.gdrive/Recon-Data/$sub/ReconData/paramlist /root/.gdrive/Recon-Data/$sub/ReconData/nuclei /root/.gdrive/Recon-Data/$sub/ReconData/CustomWordlist /root/.gdrive/Recon-Data/$sub/Screenshots
+mkdir -p /root/.gdrive/Recon-Data/$sub /root/.gdrive/Recon-Data/$sub/Subdomains /root/.gdrive/Recon-Data/$sub/ReconData /root/.gdrive/Recon-Data/$sub/ReconData/subjack /root/.gdrive/Recon-Data/$sub/ReconData/paramlist /root/.gdrive/Recon-Data/$sub/ReconData/nuclei /root/.gdrive/Recon-Data/$sub/ReconData/CustomWordlist /root/.gdrive/Recon-Data/$sub/Screenshots /root/.gdrive/Recon-Data/$sub/Meg
 #dnscan
 echo "Listing Subdomains using dnscan..."
 python3 /root/tools/dnscan/dnscan.py -d $sub -t 100 -o /root/.gdrive/Recon-Data/$sub/Subdomains/dnscan_out.txt -w $wordlist_dns;
