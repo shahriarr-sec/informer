@@ -271,7 +271,7 @@ gf firebase /root/.gdrive/Recon-Data/$sub/Meg >> /root/.gdrive/Recon-Data/$sub/R
 gf github_secrets /root/.gdrive/Recon-Data/$sub/Meg >> /root/.gdrive/Recon-Data/$sub/ReconData/gf/secrets.txt
 gf google-keys_secrets /root/.gdrive/Recon-Data/$sub/Meg >> /root/.gdrive/Recon-Data/$sub/ReconData/gf/secrets.txt
 gf google-oauth_secrets /root/.gdrive/Recon-Data/$sub/Meg >> /root/.gdrive/Recon-Data/$sub/ReconData/gf/secrets.txt
-gf google-service-account_secrets /root/.gdrive/Recon-Data/$sub/Meg >> /root/.gdrive/Recon-Data/$sub/ReconData/gf/secrets.$xt
+gf google-service-account_secrets /root/.gdrive/Recon-Data/$sub/Meg >> /root/.gdrive/Recon-Data/$sub/ReconData/gf/secrets.txt
 gf google-token_secrets /root/.gdrive/Recon-Data/$sub/Meg >> /root/.gdrive/Recon-Data/$sub/ReconData/gf/secrets.txt
 gf heroku-keys_secrets /root/.gdrive/Recon-Data/$sub/Meg >> /root/.gdrive/Recon-Data/$sub/ReconData/gf/secrets.txt
 gf mailchimp-keys_secrets /root/.gdrive/Recon-Data/$sub/Meg >> /root/.gdrive/Recon-Data/$sub/ReconData/gf/secrets.txt
