@@ -2,10 +2,27 @@ Informer is a bash script that I made for personal use.I just gatthered all the 
 
 
 
+
+
 Your brute is as good as your wordlist.
-                                     -jhaddix
+                                     
+                                     
+                                 -jhaddix
+
+
+
+
+
+
+Install:
+
+git clone https://github.com/shahriarr-sec/informer.git; cd informer; chmod +x setup.sh; ./setup.sh
+
+
 
 Uasage: ./informer.sh domains.lst
+
+
 
 
 The domains.lst should contain only domain name
