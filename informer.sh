@@ -296,7 +296,7 @@ gf_pattern
 content_discovery(){
 for sub in $(cat $host);
 do
-cat /root/.gdrive/Recon-Data/$sub/ReconData/httpx.txt | feroxbuster --stdin -e -k -r -d 3 -t 20 -L 1 -w $wordlist_cd -a "Mozilla/5.0 (Windows NT 10.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36" -o /root/.gdrive/Recon-Data/$sub/ContentDiscovery
+cat /root/.gdrive/Recon-Data/$sub/ReconData/httpx.txt | feroxbuster --stdin -e -k -r -d 3 -t 10 -L 1 -w $wordlist_cd -a "Mozilla/5.0 (Windows NT 10.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36" -o /root/.gdrive/Recon-Data/$sub/ContentDiscovery
 done
 }
 content_discovery
