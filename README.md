@@ -1,7 +1,23 @@
+Informer is a bash script that I made for personal use.I just gatthered all the command and tools I use during recon process and put them together.
+
+
+
+Your brute is as good as your wordlist.
+                                     -jhaddix
+
+Uasage: ./informer.sh domains.lst
+
+
+The domains.lst should contain only domain name
+
+cat domains.lst
+example.com
+www.target.com
+
+
+
 #Tools That I used
 
-
-#INFORMER
 
 dnscan
 
