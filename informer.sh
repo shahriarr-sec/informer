@@ -285,7 +285,7 @@ gf twilio-keys_secrets /root/.gdrive/Recon-Data/$sub/Meg >> /root/.gdrive/Recon-
 gf twitter-oauth_secrets /root/.gdrive/Recon-Data/$sub/Meg >> /root/.gdrive/Recon-Data/$sub/ReconData/gf/secrets.txt
 gf twitter-token_secrets /root/.gdrive/Recon-Data/$sub/Meg >> /root/.gdrive/Recon-Data/$sub/ReconData/gf/secrets.txt
 #Interesting
-gf interestingparams /root/.gdrive/Recon-Data/$sub/ReconData/paramlist/gathered_paramlist.txt | tee /root/.gdrive/Recon-Data/$sub/ReconData/gf/inte$estingparams.txt
+gf interestingparams /root/.gdrive/Recon-Data/$sub/ReconData/paramlist/gathered_paramlist.txt | tee /root/.gdrive/Recon-Data/$sub/ReconData/gf/interestingparams.txt
 gf interestingsubs /root/.gdrive/Recon-Data/$sub/Subdomains/resolved_subdomains.txt | tee /root/.gdrive/Recon-Data/$sub/ReconData/gf/interestingsubs.txt
 done
 }
