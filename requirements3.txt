@@ -1,0 +1,12 @@
+
+dnspython
+colorama
+requests
+requests[socks]
+argparse
+awscli
+sh
+pytest-xdist
+coloredlogs
+boto3
+soupsieve
