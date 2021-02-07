@@ -49,8 +49,9 @@ cat /root/.gdrive/Recon-Data/$sub/Subdomains/subfinder.txt >> /root/.gdrive/Reco
 rm /root/.gdrive/Recon-Data/$sub/Subdomains/subfinder.txt
 #amass
 echo "Listing Subdomains using amass..."
-amass enum -d $sub -brute -ipv4 -rf $resolvers -active -w $wordlist_dns -o /root/.gdrive/Recon-Data/$sub/Subdomains/amass-output.txt -min-for-recursive 3;
-# Cat output into all_subdomain
+#amass enum -d $sub -ipv4 -rf $25resolvers -active -max-dns-queries 10000 -o /root/.gdrive/Recon-Data/$sub/Subdomains/amass-output.txt -min-for-recursive
+amass enum -d $sub -brute -ipv4 -rf $resolvers -active -w $wordlist_dns -o /root/.gdrive/Recon-Data/$sub/Subdomains/amass-output.txt -min-for-recursive 
+# Cat output into all_subdomain3;
 cut -d ' ' -f 1 /root/.gdrive/Recon-Data/$sub/Subdomains/amass-output.txt >> /root/.gdrive/Recon-Data/$sub/Subdomains/all_subdomain;
 rm /root/.gdrive/Recon-Data/$sub/Subdomains/amass-output.txt;
 #sublist3r
