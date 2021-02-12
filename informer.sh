@@ -223,7 +223,7 @@ screenshots(){
 for sub in $(cat $host);
 do
 echo "Taking screenshots of $sub with gowitness"
-gowitness file -f /root/.gdrive/Recon-Data/$sub/ReconData/httpx.txt -X 1280 -Y 720 -D ~/.gdrive/.Database/gowitness.sqlite3 --threads 100 -P /root/.gdrive/Recon-Data/$sub/Screenshots
+gowitness file -f /root/.gdrive/Recon-Data/$sub/ReconData/httpx.txt -X 1280 -Y 720 -D ~/.gdrive/.Database/gowitness.sqlite3 --threads 20 -P /root/.gdrive/Recon-Data/$sub/Screenshots
 done
 }
 screenshots
