@@ -219,15 +219,24 @@ done
 }
 CustomWordlist
 
+#screenshots(){
+#for sub in $(cat $host);
+#do
+#echo "Taking screenshots of $sub with gowitness"
+#gowitness file -f /root/.gdrive/Recon-Data/$sub/ReconData/httpx.txt -X 1280 -Y 720 -D ~/.gdrive/.Database/gowitness.sqlite3 --threads 20 -P /root/.gdrive/Recon-Data/$sub/Screenshots
+#done
+#}
+#screenshots
+#echo "gowitness report serve 104.161.21.104:2626 to see reports from vps"
+
 screenshots(){
 for sub in $(cat $host);
 do
-echo "Taking screenshots of $sub with gowitness"
-gowitness file -f /root/.gdrive/Recon-Data/$sub/ReconData/httpx.txt -X 1280 -Y 720 -D ~/.gdrive/.Database/gowitness.sqlite3 --threads 20 -P /root/.gdrive/Recon-Data/$sub/Screenshots
+echo "Taking screenshots of $sub with aquatone"
+~/tools/aquatone/aquatone -threads 20 -out /root/.gdrive/Recon-Data/$sub/Screenshots/aquatone < /root/.gdrive/Recon-Data/$sub/ReconData/httpx.txt
 done
 }
 screenshots
-echo "gowitness report serve 104.161.21.104:2626 to see reports from vps"
 
 broken_link_scanner(){
 for sub in $(cat $host);
