@@ -233,7 +233,7 @@ screenshots(){
 for sub in $(cat $host);
 do
 echo "Taking screenshots of $sub with aquatone"
-~/tools/aquatone/aquatone -threads 20 -out /root/.gdrive/Recon-Data/$sub/Screenshots/aquatone < /root/.gdrive/Recon-Data/$sub/Subdomains/resolved_subdomains.txt
+~/tools/aquatone/aquatone -threads 20 -screenshot-timeout 60000 -resolution "1280,720" -out /root/.gdrive/Recon-Data/$sub/Screenshots/aquatone < /root/.gdrive/Recon-Data/$sub/Subdomains/resolved_subdomains.txt
 done
 }
 screenshots
