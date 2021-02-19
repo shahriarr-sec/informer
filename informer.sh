@@ -150,23 +150,7 @@ done
 }
 valid_waybackdata
 
-run_CORStest(){
-for sub in $(cat $host);
-do
-echo "Running CORStest for $sub ..."
-python3 ~/tools/CORStest/corstest.py -p 64 /root/.gdrive/Recon-Data/$sub/ReconData/httpx.txt > /root/.gdrive/Recon-Data/$sub/ReconData/CORStest_output.txt;
-done
-}
-run_CORStest
 
-aws_scanner(){
-for sub in $(cat $host);
-do
-echo "Searching for a broken bucket in aws using flumberbuckets ... "
-python3 ~/tools/flumberboozle/flumberbuckets/flumberbuckets.py -m ~/tools/massdns/bin/massdns -w /root/tools/flumberboozle/flumberbuckets/medium.txt -d /root/.gdrive/Recon-Data/$sub/Subdomains/resolved_subdomains.txt --resolve $resolvers -i test -o /root/.gdrive/Recon-Data/$sub/ReconData/aws_bucket.txt;
-done
-}
-aws_scanner
 
 param_gather(){
 for sub in $(cat $host);
@@ -180,31 +164,7 @@ done
 }
 param_gather
 
-scanner(){
-for sub in $(cat $host);
-do	
-echo "Iniatiating nuclei scanner for $sub ..."
-echo "Running token templates for $sub ..."
-nuclei -l /root/.gdrive/Recon-Data/$sub/ReconData/httpx.txt -t /root/nuclei-templates/tokens/ -silent -c 50 | tee /root/.gdrive/Recon-Data/$sub/ReconData/nuclei/nuclei-token.txt
-echo "Running subtko templates for $sub .."
-nuclei -l /root/.gdrive/Recon-Data/$sub/ReconData/httpx.txt -t /root/nuclei-templates/subdomain-takeover/ -silent -c 50 | tee /root/.gdrive/Recon-Data/$sub/ReconData/nuclei/nuclei-stko.txt
-echo "Running files templates for $sub ..."
-nuclei -l /root/.gdrive/Recon-Data/$sub/ReconData/httpx.txt -t /root/nuclei-templates/files/ -silent -c 50 | tee /root/.gdrive/Recon-Data/$sub/ReconData/nuclei/nuclei-files.txt
-echo "Running cve templates for $sub ..."
-nuclei -l /root/.gdrive/Recon-Data/$sub/ReconData/httpx.txt -t /root/nuclei-templates/cves/ -silent -c 50 | tee /root/.gdrive/Recon-Data/$sub/ReconData/nuclei/nuclei-cves.txt
-echo "Running vulns templates for $sub ..."
-nuclei -l /root/.gdrive/Recon-Data/$sub/ReconData/httpx.txt -t /root/nuclei-templates/vulnerabilities/ -silent -c 50 | tee /root/.gdrive/Recon-Data/$sub/ReconData/nuclei/nuclei-vulns.txt
-echo "Running generic detection for $sub"
-nuclei -l /root/.gdrive/Recon-Data/$sub/ReconData/httpx.txt -t /root/nuclei-templates/generic-detections/ -silent -c 50 | tee /root/.gdrive/Recon-Data/$sub/ReconData/nuclei/nuclei-genericdetec.txt
-echo "Checking security misfiguration for $sub ..."
-nuclei -l /root/.gdrive/Recon-Data/$sub/ReconData/httpx.txt -t /root/nuclei-templates/security-misconfiguration/ -silent -c 20 | tee /root/.gdrive/Recon-Data/$sub/ReconData/nuclei/nuclei-misconfig.txt
-echo "Running tech templates for $sub ..."
-nuclei -l /root/.gdrive/Recon-Data/$sub/ReconData/httpx.txt -t /root/nuclei-templates/technologies/ -silent -c 50 | tee /root/.gdrive/Recon-Data/$sub/ReconData/nuclei/nuclei-tech.txt
-echo "Running panel templates for $sub ..."
-nuclei -l /root/.gdrive/Recon-Data/$sub/ReconData/httpx.txt -t /root/nuclei-templates/panels/ -silent -c 50 | tee /root/.gdrive/Recon-Data/$sub/ReconData/nuclei/nuclei-panels.txt
-done
-}
-scanner
+
 
 
 CustomWordlist(){
@@ -219,34 +179,6 @@ done
 }
 CustomWordlist
 
-#screenshots(){
-#for sub in $(cat $host);
-#do
-#echo "Taking screenshots of $sub with gowitness"
-#gowitness file -f /root/.gdrive/Recon-Data/$sub/ReconData/httpx.txt -X 1280 -Y 720 -D ~/.gdrive/.Database/gowitness.sqlite3 --threads 20 -P /root/.gdrive/Recon-Data/$sub/Screenshots
-#done
-#}
-#screenshots
-#echo "gowitness report serve 104.161.21.104:2626 to see reports from vps"
-
-screenshots(){
-for sub in $(cat $host);
-do
-echo "Taking screenshots of $sub with aquatone"
-~/tools/aquatone/aquatone -threads 20 -screenshot-timeout 60000 -resolution "1280,720" -out /root/.gdrive/Recon-Data/$sub/Screenshots/aquatone < /root/.gdrive/Recon-Data/$sub/Subdomains/resolved_subdomains.txt
-done
-}
-screenshots
-
-broken_link_scanner(){
-for sub in $(cat $host);
-do
-echo "Checking for broken link with blc in $sub and its subdomains "
-blc -rfoi --exclude youtube.com --filter-level 3 /root/.gdrive/Recon-Data/$sub/ReconData/httpx.txt | grep "BROKEN" > /root/.gdrive/Recon-Data/$sub/ReconData/blc_output.txt
-done
-}
-broken_link_scanner
-
 tom(){
 for sub in $(cat $host);
 do
@@ -255,16 +187,6 @@ meg /root/.gdrive/Recon-Data/$sub/ReconData/CustomWordlist/paths.txt /root/.gdri
 done
 }
 tom
-
-keyfinding(){
-for sub in $(cat $host);
-do
-echo "Scraping for keys from $sub with Subdomainizer"
-echo "Subdomainizer gives many false positive it's always a good idea to check them with meg and gf patterns manually"
-python3 ~/tools/SubDomainizer/SubDomainizer.py -l /root/.gdrive/Recon-Data/$sub/ReconData/httpx.txt -o /root/.gdrive/Recon-Data/$sub/ReconData/Subdomainizer.txt -gt f64827dd745bc1fef554585ff64cb40d90924d38 -g -k -san all 
-done
-}
-keyfinding
 
 gf_pattern(){
 for sub in $(cat $host);
@@ -302,6 +224,90 @@ gf interestingsubs /root/.gdrive/Recon-Data/$sub/Subdomains/resolved_subdomains.
 done
 }
 gf_pattern
+
+#screenshots(){
+#for sub in $(cat $host);
+#do
+#echo "Taking screenshots of $sub with gowitness"
+#gowitness file -f /root/.gdrive/Recon-Data/$sub/ReconData/httpx.txt -X 1280 -Y 720 -D ~/.gdrive/.Database/gowitness.sqlite3 --threads 20 -P /root/.gdrive/Recon-Data/$sub/Screenshots
+#done
+#}
+#screenshots
+#echo "gowitness report serve 104.161.21.104:2626 to see reports from vps"
+
+screenshots(){
+for sub in $(cat $host);
+do
+echo "Taking screenshots of $sub with aquatone"
+~/tools/aquatone/aquatone -threads 20 -screenshot-timeout 60000 -resolution "1280,720" -out /root/.gdrive/Recon-Data/$sub/Screenshots/aquatone < /root/.gdrive/Recon-Data/$sub/Subdomains/resolved_subdomains.txt
+done
+}
+screenshots
+
+run_CORStest(){
+for sub in $(cat $host);
+do
+echo "Running CORStest for $sub ..."
+python3 ~/tools/CORStest/corstest.py -p 64 /root/.gdrive/Recon-Data/$sub/ReconData/httpx.txt > /root/.gdrive/Recon-Data/$sub/ReconData/CORStest_output.txt;
+done
+}
+run_CORStest
+
+
+
+broken_link_scanner(){
+for sub in $(cat $host);
+do
+echo "Checking for broken link with blc in $sub and its subdomains "
+blc -rfoi --exclude youtube.com --filter-level 3 /root/.gdrive/Recon-Data/$sub/ReconData/httpx.txt | grep "BROKEN" > /root/.gdrive/Recon-Data/$sub/ReconData/blc_output.txt
+done
+}
+broken_link_scanner
+
+scanner(){
+for sub in $(cat $host);
+do	
+echo "Iniatiating nuclei scanner for $sub ..."
+echo "Running token templates for $sub ..."
+nuclei -l /root/.gdrive/Recon-Data/$sub/ReconData/httpx.txt -t /root/nuclei-templates/tokens/ -silent -c 50 | tee /root/.gdrive/Recon-Data/$sub/ReconData/nuclei/nuclei-token.txt
+echo "Running subtko templates for $sub .."
+nuclei -l /root/.gdrive/Recon-Data/$sub/ReconData/httpx.txt -t /root/nuclei-templates/subdomain-takeover/ -silent -c 50 | tee /root/.gdrive/Recon-Data/$sub/ReconData/nuclei/nuclei-stko.txt
+echo "Running files templates for $sub ..."
+nuclei -l /root/.gdrive/Recon-Data/$sub/ReconData/httpx.txt -t /root/nuclei-templates/files/ -silent -c 50 | tee /root/.gdrive/Recon-Data/$sub/ReconData/nuclei/nuclei-files.txt
+echo "Running cve templates for $sub ..."
+nuclei -l /root/.gdrive/Recon-Data/$sub/ReconData/httpx.txt -t /root/nuclei-templates/cves/ -silent -c 50 | tee /root/.gdrive/Recon-Data/$sub/ReconData/nuclei/nuclei-cves.txt
+echo "Running vulns templates for $sub ..."
+nuclei -l /root/.gdrive/Recon-Data/$sub/ReconData/httpx.txt -t /root/nuclei-templates/vulnerabilities/ -silent -c 50 | tee /root/.gdrive/Recon-Data/$sub/ReconData/nuclei/nuclei-vulns.txt
+echo "Running generic detection for $sub"
+nuclei -l /root/.gdrive/Recon-Data/$sub/ReconData/httpx.txt -t /root/nuclei-templates/generic-detections/ -silent -c 50 | tee /root/.gdrive/Recon-Data/$sub/ReconData/nuclei/nuclei-genericdetec.txt
+echo "Checking security misfiguration for $sub ..."
+nuclei -l /root/.gdrive/Recon-Data/$sub/ReconData/httpx.txt -t /root/nuclei-templates/security-misconfiguration/ -silent -c 20 | tee /root/.gdrive/Recon-Data/$sub/ReconData/nuclei/nuclei-misconfig.txt
+echo "Running tech templates for $sub ..."
+nuclei -l /root/.gdrive/Recon-Data/$sub/ReconData/httpx.txt -t /root/nuclei-templates/technologies/ -silent -c 50 | tee /root/.gdrive/Recon-Data/$sub/ReconData/nuclei/nuclei-tech.txt
+echo "Running panel templates for $sub ..."
+nuclei -l /root/.gdrive/Recon-Data/$sub/ReconData/httpx.txt -t /root/nuclei-templates/panels/ -silent -c 50 | tee /root/.gdrive/Recon-Data/$sub/ReconData/nuclei/nuclei-panels.txt
+done
+}
+scanner
+
+keyfinding(){
+for sub in $(cat $host);
+do
+echo "Scraping for keys from $sub with Subdomainizer"
+echo "Subdomainizer gives many false positive it's always a good idea to check them with meg and gf patterns manually"
+python3 ~/tools/SubDomainizer/SubDomainizer.py -l /root/.gdrive/Recon-Data/$sub/ReconData/httpx.txt -o /root/.gdrive/Recon-Data/$sub/ReconData/Subdomainizer.txt -gt f64827dd745bc1fef554585ff64cb40d90924d38 -g -k -san all 
+done
+}
+keyfinding
+
+aws_scanner(){
+for sub in $(cat $host);
+do
+echo "Searching for a broken bucket in aws using flumberbuckets ... "
+python3 ~/tools/flumberboozle/flumberbuckets/flumberbuckets.py -m ~/tools/massdns/bin/massdns -w /root/tools/flumberboozle/flumberbuckets/medium.txt -d /root/.gdrive/Recon-Data/$sub/Subdomains/resolved_subdomains.txt --resolve $resolvers -i test -o /root/.gdrive/Recon-Data/$sub/ReconData/aws_bucket.txt;
+done
+}
+aws_scanner
 
 content_discovery(){
 for sub in $(cat $host);
