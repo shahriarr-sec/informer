@@ -156,7 +156,7 @@ param_gather(){
 for sub in $(cat $host);
 do	
 echo "Gathering parameters with unfurl..."
-cat /root/.gdrive/Recon-Data/$sub/ReconData/waybackurls.txt | grep "?" | unfurl keys > /root/.gdrive/Recon-Data/$sub/ReconData/paramlist/gathered_paramlist.txt
+cat /root/.gdrive/Recon-Data/$sub/ReconData/waybackurls.txt | grep "?" | unfurl keys | sort -u > /root/.gdrive/Recon-Data/$sub/ReconData/paramlist/gathered_paramlist.txt
 echo "Gather parameters with Arjun..."
 python3 ~/tools/Arjun/arjun.py -i /root/.gdrive/Recon-Data/$sub/ReconData/httpx.txt -m POST -o /root/.gdrive/Recon-Data/$sub/ReconData/paramlist/arjun_post_result.json 
 python3 ~/tools/Arjun/arjun.py -i /root/.gdrive/Recon-Data/$sub/ReconData/httpx.txt -m GET -o /root/.gdrive/Recon-Data/$sub/ReconData/paramlist/arjun_get_result.json
